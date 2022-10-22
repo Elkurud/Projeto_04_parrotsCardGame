@@ -6,66 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
     <title>Parrot Card Game</title>
 </head>
 <body>
     
-<div class="deck">
+    <div class="header">PARROT CARD GAME</div>
+
+<div class="deck" id="deck">
+    <div class="ex">
+        <div class="card" onclick="virarCarta(this)">
+            <div class="front-face face">
+                <img src="Archives/back.png">
+            </div>
+            <div class="back-face face">
+            <img src="Archives/fiestaparrot.gif">
+            </div>
+        </div>
+    </div>
     <div class="card" onclick="virarCarta(this)">
         <div class="front-face face">
-          Verso
+            <img src="Archives/back.png">
         </div>
         <div class="back-face face">
-          Frente
+          Frente2
         </div>
     </div>
 
-    <div class="card" onclick="virarCarta(this)">
-        <div class="front-face face">
-          Verso
-        </div>
-        <div class="back-face face">
-          Frente
-        </div>
-    </div>
-
-    <div class="card" onclick="virarCarta(this)">
-        <div class="front-face face">
-          Verso
-        </div>
-        <div class="back-face face">
-          Frente
-        </div>
-    </div>
-
-    <div class="card" onclick="virarCarta(this)">
-        <div class="front-face face">
-          Verso
-        </div>
-        <div class="back-face face">
-          Frente
-        </div>
-    </div>
-
-    <div class="card" onclick="virarCarta(this)">
-        <div class="front-face face">
-          Verso
-        </div>
-        <div class="back-face face">
-          Frente
-        </div>
-    </div>
-
-    <div class="card" onclick="virarCarta(this)">
-        <div class="front-face face">
-          Verso
-        </div>
-        <div class="back-face face">
-          Frente
-        </div>
-    </div>
 </div>
-      
+<button onclick="embaralhar()">shuffle</button>
+<button onclick="distribuir()">add</button>
 <script src="script.js"></script>
 </body>
 </html>
