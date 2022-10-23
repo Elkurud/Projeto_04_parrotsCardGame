@@ -1,12 +1,24 @@
-
-let contador = 0
+let numeroDeCartas = prompt("Com quantas cartas você vai jogar? (deve ser par e entre 4 e 14 cartas)")
+let contador = 0;
 const card = document.querySelector(".ex");
+comparador = numeroDeCartas % 2;
 
-function distribuir(num){
-    
+while((numeroDeCartas % 2) !== 0 || numeroDeCartas < 3 || numeroDeCartas > 15){
+    numeroDeCartas = prompt("(numero inserido não cumpre os requisitos!)");
+}
+
+if ((numeroDeCartas % 2) === 0 && numeroDeCartas >= 4 && numeroDeCartas <= 14){
+
+    distribuir();
+}
+
+function distribuir(){
+
     const deck = document.querySelector(".deck")
-    deck.innerHTML += card.innerHTML
-    console.log(deck);
+    for (let i = 0; i <= (numeroDeCartas - 3); i++){
+    deck.innerHTML += card.innerHTML;
+    }
+
 }
 
 function virarCarta(carta) {
