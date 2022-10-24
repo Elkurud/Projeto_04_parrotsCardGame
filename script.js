@@ -168,9 +168,6 @@ function shuffle(elems) {
  
 }
 
-var button = document.querySelector('button');
-button.addEventListener('click', function() { shuffle( document.querySelectorAll('.deck > .card') ) }, false);
-
 
 function vitoria(){
     
