@@ -2,7 +2,10 @@ let numeroDeCartas = prompt("Com quantas cartas você vai jogar? (deve ser par e
 let contador = 0;
 const card = document.querySelector(".card");
 let contador2 = 0;
-
+let contador3 = 0;
+let contador4 = 0;
+let vencer = setInterval(vitoria, 1000);
+clearInterval(vencer);
 
 while((numeroDeCartas % 2) !== 0 || numeroDeCartas < 3 || numeroDeCartas > 15){
     numeroDeCartas = prompt("(numero inserido não cumpre os requisitos!)");
@@ -11,6 +14,8 @@ while((numeroDeCartas % 2) !== 0 || numeroDeCartas < 3 || numeroDeCartas > 15){
 if ((numeroDeCartas % 2) === 0 && numeroDeCartas >= 4 && numeroDeCartas <= 14){
 
     distribuir();
+    setTimeout (colocarValorNasCartas, 1000);
+    shuffle( document.querySelectorAll('.deck > .card') );
 }
 
 function distribuir(){
@@ -19,27 +24,19 @@ function distribuir(){
     for (let i = 0; i <= (numeroDeCartas - 3); i++){
     deck.innerHTML += card.outerHTML;
     }
-
-}
-
-function desvirar(){
-
-    const cartas = document.querySelectorAll('.virada');
-    
-    for( let i = 0; i < cartas.length; i++){
-        cartas[i].classList.remove('virada')
-    }
 }
 
 function virarCarta(carta) {
 
     carta.classList.add('virada');
     contador++;
+    contador3++;
 
     if (contador == 2){
         setTimeout(desvirar, 1000);
         contador = 0
     }
+    vitoria();
 }
 
 function certa(carta){
@@ -49,6 +46,7 @@ function certa(carta){
 
     if (contador2 == 2){
         carta.classList.add('carta2');
+        carta.classList.remove('carta1');
         contador2 = 0;
 
         let carta1Img = document.querySelector('.carta1').getElementsByTagName('img');
@@ -56,12 +54,12 @@ function certa(carta){
         let carta1 = document.querySelector('.carta1');
         let carta2 = document.querySelector('.carta2');
 
-        console.log(carta1);
-        console.log(carta2);
+        
+        if(carta1Img[1].src == carta2Img[1].src || carta2Img[1].src == carta1Img[1].src){
+            carta1.classList.add('certa');
+            carta2.classList.add('certa');
 
-        if(carta1Img[1].src == carta2Img[1].src){
-            carta1.classList.add('.certa');
-            carta2.classList.add('.certa');
+
         }
 
         const cartas1 = document.querySelectorAll('.carta1');
@@ -75,11 +73,23 @@ function certa(carta){
             for( let i = 0; i < cartas2.length; i++){
                 cartas2[i].classList.remove('carta2')
         }
+        if (contador4 > 1){
+        clearInterval(vencer);
+        }
+        let vencer = setInterval(vitoria, 1000);
+        contador4++;
     }
 }
 
 
+function desvirar(){
 
+    const cartas = document.querySelectorAll('.virada');
+    
+    for( let i = 0; i < cartas.length; i++){
+        cartas[i].classList.remove('virada')
+    }
+}
 
 let image = document.querySelectorAll(".imagem");
 
@@ -127,11 +137,12 @@ function colocarValorNasCartas(){
         }
            console.log(i); 
     }
+
+    shuffle( document.querySelectorAll('.deck > .card') );
 }
 
-/*https://codepen.io/dimayakovlev/pen/VmxOYM*/
 function shuffle(elems) {
- 
+    console.log('oi');
     allElems = (function(){
 	let ret = [];
     let l = elems.length;
@@ -159,4 +170,15 @@ function shuffle(elems) {
 
 var button = document.querySelector('button');
 button.addEventListener('click', function() { shuffle( document.querySelectorAll('.deck > .card') ) }, false);
-/*fim da funcao embaralhar*/
+
+
+function vitoria(){
+    
+    let deck = document.querySelectorAll('.card');
+    let acertos = document.querySelectorAll('.certa');
+
+    if(deck.length == acertos.length){
+        clearInterval(vencer);
+        alert("Você ganhou em " + contador3 + " jogadas!");
+    }
+}
