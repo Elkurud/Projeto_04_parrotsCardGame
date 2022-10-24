@@ -17,27 +17,26 @@
     <div class="header">PARROT CARD GAME</div>
 
 <div class="deck" id="deck">
-    <div class="ex">
-        <div class="card" onclick="virarCarta(this)">
-            <div class="front-face face">
-                <img src="Archives/back.png">
-            </div>
-            <div class="back-face face">
-            <img src="Archives/fiestaparrot.gif">
-            </div>
-        </div>
-    </div>
-    <div class="card" onclick="virarCarta(this)">
+    <div class="card" onclick="virarCarta(this), certa(this)" alt="image">
         <div class="front-face face">
             <img src="Archives/back.png">
         </div>
         <div class="back-face face">
-          Frente2
+        <img class="imagem" src="Archives/fiestaparrot.gif">
+    </div>
+</div>
+    <div class="card" onclick="virarCarta(this), certa(this)" alt="image">
+        <div class="front-face face">
+            <img src="Archives/back.png">
+        </div>
+        <div class="back-face face">
+            <img class="imagem" src="Archives/fiestaparrot.gif">
         </div>
     </div>
 
 </div>
-<button onclick="embaralhar()">shuffle</button>
+<button onclick="shuffle()">shuffle</button>
+<button onclick="colocarValorNasCartas()">troca</button>
 <script src="script.js"></script>
 </body>
 </html>
